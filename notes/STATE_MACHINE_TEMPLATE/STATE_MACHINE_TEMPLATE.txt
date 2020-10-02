@@ -1,0 +1,19 @@
+state = new StateMachine("idle",
+
+	"idle", {
+		enter: function() {
+			
+		},
+		step: function() {
+			
+		}
+	},
+	
+	"walk", {
+		enter: function() {
+			
+		},
+		step: function() {
+			
+		}
+	},
