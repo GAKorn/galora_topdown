@@ -22,15 +22,16 @@ function set_player_max_speed(_spdWalk, _spdJog, _spdRun) {
 MUST BE CALLED AFTER SETTING THE RIGHT DIRECTION
 -------*/
 function player_get_sprite(){
-	var _dir = noone;
+	var _dir;
 	if (argument_count > 0){
-		var _d = argument[0]/45;
-		_dir = get_8dir(_d);
-	} else {
-		_dir = get_8dir(CARDINAL_DIR_8);
-	}
+		//direction = argument[0];
+		//spriteDirection = round(argument[0]/90);		
+		_dir = get_4dir(argument[0]);
+	} else _dir = get_4dir(spriteDirection);
+	
 	var _sprName = "spr_player_"+stateName+"_"+_dir,
 		_spr = asset_get_index(_sprName);
+	show_debug_message(_sprName);
 		
 	return _spr;
 	

@@ -67,5 +67,6 @@ function move_and_collide(_hSpd, _vSpd){
 	}
 	
 	//return
+	
 	return _collided;		
 }

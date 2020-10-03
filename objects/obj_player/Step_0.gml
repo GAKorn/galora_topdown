@@ -1,3 +1,3 @@
 /// @description
-//tralalala
+show_debug_message(spriteDirection);
 state.step();

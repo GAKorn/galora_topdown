@@ -1,5 +1,7 @@
 /// @description Initializing Player object
-spriteDirection = 0;
+spriteDirection = 3;
+inputDirection = undefined;	//Assembling Vector
+inputMagnitude = undefined;
 //oldSprite = undefined;
 oldDir = undefined;
 stateName = "";
@@ -43,7 +45,7 @@ state = new StateMachine("idle",
 				inputDirection = point_direction(0, 0 , RIGHT - LEFT, DOWN - UP);	//Assembling Vector
 				inputMagnitude = ((RIGHT - LEFT) != 0) or ((DOWN - UP) != 0);		//Normalizing Vector and generating a value of 1
 				direction = inputDirection;											//Passing Vector to built in Direction
-				spriteDirection = CARDINAL_DIR_8;									//Rounding direction for sprite
+				spriteDirection = CARDINAL_DIR_4;									//Rounding direction for sprite
 				stateName = "idle";
 				/*
 				//limiting speed
@@ -84,6 +86,7 @@ state = new StateMachine("idle",
 			
 			#endregion
 			
+			
 		},
 	},
 	"move", {
@@ -102,7 +105,7 @@ state = new StateMachine("idle",
 				inputDirection = point_direction(0, 0 , RIGHT - LEFT, DOWN - UP);	//Assembling Vector
 				inputMagnitude = ((RIGHT - LEFT) != 0) or ((DOWN - UP) != 0);		//Normalizing Vector and generating a value of 1
 				direction = inputDirection;											//Passing Vector to built in Direction
-				spriteDirection = CARDINAL_DIR_8;									//Rounding direction for sprite
+				spriteDirection = CARDINAL_DIR_4;									//Rounding direction for sprite
 				
 				//limiting speed
 				//vars
@@ -117,7 +120,7 @@ state = new StateMachine("idle",
 				_speed = lerp(_speed, 0, _friction);
 				
 				//store previous direction
-				if (abs(_speed) > .75) oldDir = direction;
+				if (abs(_speed) > .75) oldDir = spriteDirection;
 				
 				//stop
 				if (_speed <= .4) _speed = 0;

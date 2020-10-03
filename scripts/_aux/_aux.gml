@@ -18,6 +18,9 @@ function approach(_val1, _val2, _inc) {
 
 //way to get the correct direction for naming the sprite
 #region Direction  Getter
+
+#region 8 direction - LEGACY
+/*
 ///@func	get_8dir(direction)
 ///@param	{real} direction	The rounded direction, divided by 45 (8 dir)
 ///@return	_directionName		the direction name, in string format
@@ -51,24 +54,29 @@ function get_8dir(_dir){
 	return _directionName;
 	
 }
+*/
+#endregion
 	
 ///@func	get_4dir(direction)
 ///@param	{real} direction	The rounded direction, divided by 90 (4 dir)
 ///@return	_directionName		the direction name, in string format
 function get_4dir(_dir){
-	var _directionName;
+	var _directionName = "";
 	switch _dir {
 		//facing right
-		case 0:		_directionName = "right";		break;
+		case 0:		_directionName = "right";	break;
 	
 		//facing up
 		case 1:		_directionName = "up";		break;
 	
 		//facing left
-		case 2:		_directionName = "left";			break;
+		case 2:		_directionName = "left";	break;
 	
 		//facing down
-		case 3:		_directionName = "down";		break;
+		case 3:		_directionName = "down";	break;
+		
+		//facing right - to prevent bugs
+		case 4:		_directionName = "right";	break;
 	}
 	return _directionName;
 	
