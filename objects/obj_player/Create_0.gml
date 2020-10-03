@@ -39,35 +39,17 @@ state = new StateMachine("idle",
 		step: function(){
 			//this is the STEP EVENT
 			#region Movement and Direction Logic
-				/*
-				Here we apply all the logic for the player movement.
-				*/
-				inputDirection = point_direction(0, 0 , RIGHT - LEFT, DOWN - UP);	//Assembling Vector
+				
+				//Here we apply all the logic for the player movement, so we can always check every direction of the player.				
+				/*inputDirection = point_direction(0, 0 , RIGHT - LEFT, DOWN - UP);	//Assembling Vector
 				inputMagnitude = ((RIGHT - LEFT) != 0) or ((DOWN - UP) != 0);		//Normalizing Vector and generating a value of 1
 				direction = inputDirection;											//Passing Vector to built in Direction
 				spriteDirection = CARDINAL_DIR_4;									//Rounding direction for sprite
-				stateName = "idle";
-				/*
-				//limiting speed
-				//vars
-				var _maxSpeed = 0, hSpd = 0, vSpd = 0, _speed = 0, _friction = 0;
-				
-				//speed with acceleration
-				_maxSpeed = set_player_max_speed(spdWalk, spdJog, spdRun);
-				_speed = inputMagnitude * lerp(0, _maxSpeed, ACCEL);
-				
-				//apply friction
-				_friction = get_friction();
-				_speed = lerp(_speed, 0, _friction);
-				
-				//stop
-				if (_speed <= .4) _speed = 0;
-				
-				//applly movement
-				hSpd = lengthdir_x(_speed, inputDirection);
-				vSpd = lengthdir_y(_speed, inputDirection);				
-				move_and_collide(hSpd, vSpd);
 				*/
+				player_assemble_base_direction();
+				stateName = "idle";
+				
+				
 			#endregion
 			
 			#region Animation and SpriteChange
@@ -95,18 +77,19 @@ state = new StateMachine("idle",
 			
 			
 		},
-		step: function() { 
-	
-			//this is the STEP EVENT
-			#region Movement and Direction Logic
+		step: function() {  //this is the STEP EVENT
+			
+			#region Movement Logic
 				/*
 				Here we apply all the logic for the player movement.
 				*/
+				
 				inputDirection = point_direction(0, 0 , RIGHT - LEFT, DOWN - UP);	//Assembling Vector
 				inputMagnitude = ((RIGHT - LEFT) != 0) or ((DOWN - UP) != 0);		//Normalizing Vector and generating a value of 1
 				direction = inputDirection;											//Passing Vector to built in Direction
 				spriteDirection = CARDINAL_DIR_4;									//Rounding direction for sprite
 				
+				player_assemble_base_direction();
 				//limiting speed
 				//vars
 				var _maxSpeed = 0, hSpd = 0, vSpd = 0, _speed = 0, _friction = 0;
@@ -149,7 +132,7 @@ state = new StateMachine("idle",
 			#endregion
 			
 			#region Change State
-				if (!inputMagnitude) {
+				if (_speed <= 0) {
 					state_switch("idle");
 				}
 			#endregion

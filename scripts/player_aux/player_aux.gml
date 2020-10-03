@@ -36,3 +36,45 @@ function player_get_sprite(){
 	return _spr;
 	
 }
+	
+///@func		player_assemble_base_direction()
+///@desc		Code snipet that returns the direction and vector of the player movement and facing
+//				wich we use for moving and everything else.
+//				CAN ONLY BE USED BY THE PLAYER AND NEEDS PLAYER VARIABLES TO BE DECLARED FIRST!
+function player_assemble_base_direction(){
+	inputDirection = point_direction(0, 0 , RIGHT - LEFT, DOWN - UP);	//Assembling Vector
+	inputMagnitude = ((RIGHT - LEFT) != 0) or ((DOWN - UP) != 0);		//Normalizing Vector and generating a value of 1
+	direction = inputDirection;											//Passing Vector to built in Direction
+	spriteDirection = CARDINAL_DIR_4;									//Divides direction by the number of directions we use in the game, so
+																		//we can animate the sprites correctly.
+}
+/*	
+///@func		player_move()
+///@param		{string}   oldState 	the direction to keep
+function player_move(){
+	player_assemble_base_direction();
+	//vars
+	var _maxSpeed = 0, hSpd = 0, vSpd = 0, _speed = 0, _friction = 0;
+				
+	//speed with acceleration
+	_maxSpeed = set_player_max_speed(spdWalk, spdJog, spdRun);
+	_speed = inputMagnitude * lerp(0, _maxSpeed, ACCEL);
+				
+	//apply friction
+	_friction = get_friction();
+	_speed = lerp(_speed, 0, _friction);
+				
+	//store previous direction
+	if (abs(_speed) > .75) oldDir = spriteDirection;
+				
+	//stop
+	if (_speed <= .4) _speed = 0;
+				
+	//applly movement
+	hSpd = lengthdir_x(_speed, inputDirection);
+	vSpd = lengthdir_y(_speed, inputDirection);				
+	move_and_collide(hSpd, vSpd);
+	
+	return _speed;
+	
+}*/
