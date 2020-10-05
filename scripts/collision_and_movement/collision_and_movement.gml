@@ -31,7 +31,7 @@ function move_and_collide(_hSpd, _vSpd){
 		_collided = true;
 		_hSpd = 0
 	}
-	//x += _hSpd
+	x += _hSpd
 		
 	//vertical tiles
 	if (tilemap_get_at_pixel(_collision_map, x, y + _vSpd)) {
@@ -40,8 +40,8 @@ function move_and_collide(_hSpd, _vSpd){
 		_collided = true;
 		_vSpd = 0
 	}
-	//y += _vSpd;
-	
+	y += _vSpd;
+	/*
 	//checks for obj collision
 	if (!_collided){
 		//horizontal
@@ -64,9 +64,36 @@ function move_and_collide(_hSpd, _vSpd){
 			}
 		}
 		y += _vSpd;		
-	}
+	}*/
 	
 	//return
 	
 	return _collided;		
+}
+	
+function move_and_collide_ext (_hSpd, _vSpd){
+	var _collided = false;
+	//horizontal
+	if (place_meeting(x + _hSpd, y, pCollider)){
+		repeat (abs(_hSpd)+1){
+			if place_meeting(x + sign(_hSpd), y, pCollider){
+				_hSpd = 0;
+				_collided = true;
+			}
+		}
+	}
+				
+	//vertical
+	if (place_meeting(x, y + _vSpd, pCollider)){
+		repeat (abs(_vSpd)+1){
+			if place_meeting(x, y + sign(_vSpd), pCollider){
+				_vSpd = 0;
+				_collided = true;
+			}
+		}
+	}
+				
+	_collided = move_and_collide(_hSpd, _vSpd);
+	
+	return _collided;
 }

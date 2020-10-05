@@ -1,11 +1,10 @@
 {
-  "name": "tlsCollision",
   "spriteId": {
     "name": "collision_tille_simple",
     "path": "sprites/collision_tille_simple/collision_tille_simple.yy",
   },
-  "tileWidth": 32,
-  "tileHeight": 32,
+  "tileWidth": 16,
+  "tileHeight": 16,
   "tilexoff": 0,
   "tileyoff": 0,
   "tilehsep": 0,
@@ -39,6 +38,7 @@
     "path": "folders/AmbientCollision.yy",
   },
   "resourceVersion": "1.0",
+  "name": "tlsCollision",
   "tags": [],
   "resourceType": "GMTileSet",
 }

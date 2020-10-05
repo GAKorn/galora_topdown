@@ -4,7 +4,7 @@
 
 #macro PLAYER obj_player
 #macro FRAME_RATE 60
-#macro TILE_SIZE 32
+#macro TILE_SIZE 16
 #macro CARDINAL_DIR_8 round(direction/45) //this is for a 8 dir sprite
 #macro CARDINAL_DIR_4 round(direction/90) //this is for a 4 dir sprite
 

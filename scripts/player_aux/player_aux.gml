@@ -24,9 +24,12 @@ MUST BE CALLED AFTER SETTING THE RIGHT DIRECTION
 function player_get_sprite(){
 	var _dir;
 	if (argument_count > 0){
-		//direction = argument[0];
-		//spriteDirection = round(argument[0]/90);		
-		_dir = get_4dir(argument[0]);
+		//if (argument[0] != (0 or 1 or 2 or 3 or 4)) {
+		//	var _d = round(argument[0]/90);
+		//	_dir = get_4dir(_d);
+		//} else {
+			_dir = get_4dir(argument[0]);
+		//}
 	} else _dir = get_4dir(spriteDirection);
 	
 	var _sprName = "spr_player_"+stateName+"_"+_dir,

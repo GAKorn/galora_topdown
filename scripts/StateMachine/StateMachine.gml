@@ -100,7 +100,11 @@ function StateMachine(_state) constructor {
 		
 		if (!variable_struct_exists(_struct, "enter"))	_struct.enter	=	function()	{};
 		if (!variable_struct_exists(_struct, "step"))	_struct.step	=	function()	{};
-		if (!variable_struct_exists(_struct, "draw"))	_struct.draw	=	function()	{draw_self()};
+		if (!variable_struct_exists(_struct, "draw"))	_struct.draw	=	function()	{
+																				shader_set(shd_passThrough);
+																				draw_self();
+																				shader_reset();
+																				};
 		if (!variable_struct_exists(_struct, "leave"))	_struct.leave	=	function()	{};
 		
 		variable_struct_set(states, _name, [ method(other, _struct.enter),
